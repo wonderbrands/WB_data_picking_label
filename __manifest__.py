@@ -1,22 +1,15 @@
 # -*- coding: utf-8 -*-
 {
-    'name': "Pre Picking",
+    'name': "Picking Label and Packing List",
 
     'summary': """
-        Workload Management for Picking""",
+        Printing of the Picking Report with Barcodes""",
 
     'description': """
-        This module allows you to register the Sales Orders assigned to each Warehouse employee
-         to carry out the Picking or packaging of the products that allow to satisfy the
-         Sales Orders generated in Odoo by the different sales channels.
-
-        Functionality:
-         This module logs:
-         -The sales order number or Odoo SO
-         -Name of the employee who performs the registration and who will process the Picking
-         -Status of the process, In Process, Not processed, Delayed.
-         -Reason for delay.
-        """,
+        -This module allows the printing of the Picking report with Barcodes
+         -Adds the fields of Meli's label was printed, reference_delivery, delivery address,
+         comments, Output Printing with Barcode, Last product location.
+    """,
 
     'author': "Wonderbrands",
     'website': "https://www.wonderbrands.co",
@@ -28,13 +21,26 @@
     'version': '15.0',
 
     # any module necessary for this one to work correctly
-    'depends': ['base'],
+    'depends': ['base','stock','sale','product','wb_pre_picking','stock_picking_batch', 'wb_product'],
 
     # always loaded
     'data': [
-        'security/security.xml',
-        'security/ir.model.access.csv',
-        'views/views.xml',
-        'views/templates.xml',
+        #'security/security.xml',
+        #'security/ir.model.access.csv',
+        #'security/security_rules.xml',
+        'views/packing_list_view.xml',
+        'views/packing_list_report.xml',
+
+        'views/picking_label_view.xml',
+        'views/picking_package.xml',
+        'views/picking_label_report.xml',
+
+        #'report/picking_label_list_reports_views.xml',
+        #'report/picking_label_list_report.xml',
+
+        'report/packing_list_report.xml',
+        'report/stock_picking_batch_reports_views.xml',
+        'views/universal_ops_format.xml',
+        'views/universal_ops_format_no_batch.xml'
     ],
 }
