@@ -5,8 +5,8 @@
             <field name="name">Lista de empaque sin especificaciones</field>
             <field name="model">stock.picking</field>
             <field name="report_type">qweb-pdf</field>
-            <field name="report_name">wb_picking_label.report_picking_package</field>
-            <field name="report_file">wb_picking_label.report_picking_package</field>
+            <field name="report_name">WB_data_picking_label.report_picking_package</field>
+            <field name="report_file">WB_data_picking_label.report_picking_package</field>
             <!--<field name="binding_model_id" ref="model_stock_picking"/>
             <field name="binding_type">report</field>-->
         </record>
@@ -39,7 +39,7 @@
 
                                         <t t-foreach="o.sale_id.order_line" t-as="line">
                                             <span t-field="line.name"/> <br/>
-                                            <span t-field="line.product_uom_qty"/> <br/>
+                                            <span t-field="line.quantity"/> <br/>
                                             <!--<span t-field="o.location_id"/> <br/>-->
                                         </t>
                                         <t t-foreach="o.move_line_ids" t-as="move">

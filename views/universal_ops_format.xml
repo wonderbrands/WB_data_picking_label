@@ -5,8 +5,8 @@
             <field name="name">Formato universal OPS</field>
             <field name="model">stock.picking.batch</field>
             <field name="report_type">qweb-pdf</field>
-            <field name="report_name">wb_picking_label.report_batch_picking_template</field>
-            <field name="report_file">wb_picking_label_batch_picking_template</field>
+            <field name="report_name">WB_data_picking_label.report_batch_picking_template</field>
+            <field name="report_file">WB_data_picking_label_batch_picking_template</field>
             <field name="binding_model_id" ref="model_stock_picking_batch"/>
             <field name="binding_type">report</field>
         </record>
@@ -38,7 +38,7 @@
 
                                         <!-- Second Column with Barcode -->
                                         <td style="width: 32%; text-align: center; vertical-align: center; padding: 5px;">
-                                            <img t-att-src="'/report/barcode/?type=%s&amp;value=%s&amp;width=%s&amp;height=%s&amp;quiet=0' % ('Code128', sale['Sale_ID'], 400, 180)" 
+                                            <img t-att-src="'/report/barcode/?barcode_type.=%s&amp;value=%s&amp;width=%s&amp;height=%s&amp;quiet=0' % ('Code128', sale['Sale_ID'], 400, 180)" 
                                                 style="width: 95%; height: auto; margin: 2px;" 
                                                 alt="Barcode"/>
                                             <p style="text-align: center; font-size: x-small; margin: 0;">

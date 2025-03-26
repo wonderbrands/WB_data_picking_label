@@ -30,7 +30,7 @@
 
                                         <t t-foreach="o.sale_id.order_line" t-as="line">
                                             <span t-field="line.name"/> <br/>
-                                            <span t-field="line.product_uom_qty"/> <br/>
+                                            <span t-field="line.quantity"/> <br/>
                                             <!-- <span t-field="o.location_id"/> <br/> -->
                                         </t>
                                         <t t-foreach="o.move_line_ids" t-as="move">

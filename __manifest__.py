@@ -18,10 +18,10 @@
     # Check https://github.com/odoo/odoo/blob/12.0/odoo/addons/base/data/ir_module_category_data.xml
     # for the full list
     'category': 'Inventory',
-    'version': '15.0',
+    'version': '18.0',
 
     # any module necessary for this one to work correctly
-    'depends': ['base','stock','sale','product','wb_pre_picking','stock_picking_batch', 'wb_product'],
+    'depends': ['base','stock','sale','product','WB_data_pre_picking','stock_picking_batch', 'WB_data_product'],
 
     # always loaded
     'data': [
@@ -43,4 +43,10 @@
         'views/universal_ops_format.xml',
         'views/universal_ops_format_no_batch.xml'
     ],
+
+    "external_dependencies": {
+        "python": [
+            "rlPyCairo"
+        ]
+    }
 }

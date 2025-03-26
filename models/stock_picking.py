@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 from odoo import models, exceptions, fields, api, _
-from odoo.exceptions import UserError, ValidationError, Warning
+from odoo.exceptions import UserError, ValidationError
 from odoo import exceptions
 import datetime
 import logging
@@ -141,7 +141,7 @@ class Picking_Label(models.Model):
                     pick_by_sale_orders[sale_id.name]["Picks"][-1]["Productos"].append(
                         {
                             "Producto": product.product_id.name,
-                            "Cantidad_reservado": int(product.product_uom_qty),
+                            "Cantidad_reservado": int(product.quantity),
                             "Cantidad_hecho": int(product.qty_done),
                             "Picking_zone": pick.pick_zone_index.name,
                             "SKU": product.product_id.default_code, 
@@ -150,7 +150,7 @@ class Picking_Label(models.Model):
                     )
 
         for product in sale_id.order_line:
-            pick_by_sale_orders[sale_id.name]["Guide_nums"] += int(product.product_uom_qty)
+            pick_by_sale_orders[sale_id.name]["Guide_nums"] += int(product.quantity)
 
         return pick_by_sale_orders
 
@@ -164,7 +164,7 @@ class Picking_Label(models.Model):
             raise UserError(_('Nada que imprimir.'))
 
         # Pass data to report
-        return self.env.ref('wb_picking_label.action_picking_report').report_action(
+        return self.env.ref('WB_data_picking_label.action_picking_report').report_action(
             self
         )
 
@@ -174,7 +174,7 @@ class Picking_Label(models.Model):
         _logger = logging.getLogger(__name__)
         _logger.info('LISTA DE EMPAQUE PICK %s', self.name)
         self.imprimio_lista_empaque=True
-        return self.env.ref('wb_picking_label.action_picking_label_report').report_action(self)
+        return self.env.ref('WB_data_picking_label.action_picking_label_report').report_action(self)
 
     #Print "Out" report
     def print_out(self):
@@ -189,7 +189,7 @@ class Picking_Label(models.Model):
         self.ensure_one()
         _logger = logging.getLogger(__name__)
         _logger.info('LISTA DE EMPAQUE PICK %s', self.name)
-        return self.env.ref('wb_picking_label.action_picking_package_report').report_action(self)
+        return self.env.ref('WB_data_picking_label.action_picking_package_report').report_action(self)
 
     def button_validate(self):
         #self.ensure_one()

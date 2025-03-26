@@ -104,7 +104,7 @@ class PackingList(models.Model):
                         pick_by_sale_orders[sale_id.name]["Picks"][-1]["Productos"].append(
                             {
                                 "Producto": product.product_id.name,
-                                "Cantidad_reservado": int(product.product_uom_qty),
+                                "Cantidad_reservado": int(product.quantity),
                                 "Cantidad_hecho": int(product.qty_done),
                                 "Picking_zone": pick.pick_zone_index.name,
                                 "SKU": product.product_id.default_code, 
@@ -124,7 +124,7 @@ class PackingList(models.Model):
             raise UserError(_('Nada que imprimir.'))
 
         # Pass data to report
-        return self.env.ref('wb_picking_label.action_batch_picking_report').report_action(
+        return self.env.ref('WB_data_picking_label.action_batch_picking_report').report_action(
             self
         )
 
@@ -136,4 +136,4 @@ class PackingList(models.Model):
         pickings = self.mapped('picking_ids')
         if not pickings:
             raise UserError(_('Nada que imprimir.'))
-        return self.env.ref("wb_picking_label.action_packing_list_report").report_action(self)
+        return self.env.ref("WB_data_picking_label.action_packing_list_report").report_action(self)

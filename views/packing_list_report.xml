@@ -5,8 +5,8 @@
             <field name="name">Lista de Empaque Productos</field>
             <field name="model">stock.picking.batch</field>
             <field name="report_type">qweb-pdf</field>
-            <field name="report_name">wb_picking_label.report_packinglist_template</field>
-            <field name="report_file">wb_picking_label.report_packinglist_template</field>
+            <field name="report_name">WB_data_picking_label.report_packinglist_template</field>
+            <field name="report_file">WB_data_picking_label.report_packinglist_template</field>
         </record>
 
         <template id="report_packinglist_template">
@@ -40,7 +40,7 @@
                                                 <br/>
                                                 <t t-foreach="pick.sale_id.order_line" t-as="line">
                                                     <span t-field="line.name"/> <br/>
-                                                    <span t-field="line.product_uom_qty"/> <br/>
+                                                    <span t-field="line.quantity"/> <br/>
                                                     <!--<span t-field="pick.location_id"/> <br/>-->
                                                 </t>
                                                 <t t-foreach="o.move_line_ids" t-as="move">

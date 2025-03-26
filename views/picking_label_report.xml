@@ -5,8 +5,8 @@
             <field name="name">Lista de Empaque</field>
             <field name="model">stock.picking</field>
             <field name="report_type">qweb-pdf</field>
-            <field name="report_name">wb_picking_label.report_picking_label_template</field>
-            <field name="report_file">wb_picking_label.report_picking_label_template</field>
+            <field name="report_name">WB_data_picking_label.report_picking_label_template</field>
+            <field name="report_file">WB_data_picking_label.report_picking_label_template</field>
             <field name="binding_model_id" ref="model_stock_picking"/>
             <field name="binding_type">report</field>
         </record>
@@ -97,14 +97,14 @@
                                 </thead>
 
                                 <tbody>
-                                    <t t-set="lines" t-value="o.move_lines.filtered(lambda x: x.product_uom_qty)"/>
+                                    <t t-set="lines" t-value="o.move_lines.filtered(lambda x: x.quantity)"/>
                                     <tr t-foreach="lines" t-as="move">
                                         <td>
                                             <span t-field="move.product_id"/>
                                             <p t-if="o.picking_type_code == 'outgoing'"><span t-field="move.product_id.sudo().description_pickingout"/></p>
                                             <p t-if="o.picking_type_code == 'incoming'"><span t-field="move.product_id.sudo().description_pickingin"/></p>
                                         </td>
-                                        <td><span t-field="move.product_uom_qty"/><span t-field="move.product_uom"/></td>
+                                        <td><span t-field="move.quantity"/><span t-field="move.product_uom"/></td>
                                         <td><span t-field="move.quantity_done"/></td>
                                         <td><span t-field="move.product_id.stock_real"/></td>
                                         <!--<td><span t-field="move.location_id"/></td>-->
