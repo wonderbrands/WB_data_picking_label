@@ -97,7 +97,7 @@
                                 </thead>
 
                                 <tbody>
-                                    <t t-set="lines" t-value="o.move_lines.filtered(lambda x: x.quantity)"/>
+                                    <t t-set="lines" t-value="o.move_ids_without_package.filtered(lambda x: x.quantity)"/>
                                     <tr t-foreach="lines" t-as="move">
                                         <td>
                                             <span t-field="move.product_id"/>
