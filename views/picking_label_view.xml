@@ -5,9 +5,6 @@
       <field name="model">stock.picking</field>
       <field name="inherit_id" ref="stock.view_picking_form"/>
       <field name="arch" type="xml">
-            <xpath expr='//header/button[@name="do_print_picking"]' position="replace">
-                <button name="print_out" string="Imprimir Salida" groups="stock.group_stock_user" type="object"/>
-            </xpath>
             <xpath expr="//header" position="inside">
                 <button name="universal_format_print" string="Formato universal OPS" groups="stock.group_stock_user" type="object" class="oe_highlight" />
                 <button name="show_inventory" string="Ver Disponiblidad" groups="stock.group_stock_user" type="object" invisible="0"/>
